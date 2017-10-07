@@ -1,10 +1,10 @@
-﻿/**
+﻿package com.udea.registro_actividades.modelo;
+
+/**
  * Esta clase define la entidad para el objeto Registro de actividades
  * @author: Gonzalo Garcia gonchalo620@gmail.com
  * @version: 21/04/2017/
  */
-package com.udea.registro_actividades.modelo;
-
 
 import java.util.Date;
 
