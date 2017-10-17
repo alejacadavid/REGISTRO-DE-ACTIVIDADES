@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.udea.registro_actividades.dao.AsignacionesDAO;
+import com.udea.registro_actividades.dao.SemestresDAO;
 import com.udea.registro_actividades.modelo.Asignaciones;
+import com.udea.registro_actividades.modelo.Semestres;
 
 //crossorigin para que permita ser usado desde afuera, se pueden hacer más configuraciones. con crossorigin sin parámetros queda abierto para cualquier maquina
 @CrossOrigin
@@ -27,6 +29,8 @@ public class AsignacionesRestController {
 
 	@Autowired
 	AsignacionesDAO asignacionesDAO;
+	@Autowired
+	SemestresDAO semestresDAO;
 
 	/**
 	 * @author: Gonzalo Garcia gonchalo620@gmail.com
@@ -62,6 +66,20 @@ public class AsignacionesRestController {
 	@ResponseBody
 	public Asignaciones getAsignaciones(Integer id) {
 		Asignaciones asignaciones = asignacionesDAO.findById(id);
+		return asignaciones;
+	}
+	
+	/**
+	 * @author: Juan David Torres juandavid.torres@gmail.com
+	 * @version: 17/10/2017/
+	 */
+	@RequestMapping("/asignaciones/findByUser")
+	@ResponseBody
+	public List<Asignaciones> getAsignacionesByUser(Integer usuId, Integer semId) {
+		List<Asignaciones> asignaciones = new ArrayList<Asignaciones>();
+		Semestres semestre = new Semestres();
+		semestre = semestresDAO.findById(semId);
+		asignaciones = asignacionesDAO.findByUsuIdAndSemestre(usuId, semestre);
 		return asignaciones;
 	}
 	

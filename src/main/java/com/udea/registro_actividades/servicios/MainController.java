@@ -48,7 +48,7 @@ public class MainController {
   @RequestMapping("/index")
   @ResponseBody
   public String index() {
-    return "Microservicios de Registro Actividades ";
+    return "Microservicios de Registro Actividades";
   }
   
   
