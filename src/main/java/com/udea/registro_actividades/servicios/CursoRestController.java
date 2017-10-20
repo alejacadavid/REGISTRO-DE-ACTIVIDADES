@@ -43,7 +43,7 @@ public class CursoRestController {
 	SemestresDAO semestreDAO;
 	
 	
-	@RequestMapping("/Curso/findAsingXGroup")
+	@RequestMapping("/curso/findAsingXGroup")
 	@ResponseBody
 	public Asignaciones  obtenerAsigPorGrupo(Integer usuId, Integer grupoId){
 		Asignaciones asignaciones = new Asignaciones();
@@ -60,7 +60,7 @@ public class CursoRestController {
 		return asignaciones;
 	}
 		
-	@RequestMapping("/Curso/findAsing")
+	@RequestMapping("/curso/findAsing")
 	@ResponseBody
 	public List<CursoProfesor> buscarAsignacion(Integer usuId, Integer semId) {
 		List<Asignaciones> asignaciones = new ArrayList<Asignaciones>();
@@ -74,8 +74,7 @@ public class CursoRestController {
 		semestre = semestreDAO.findById(semId);
 		asignaciones = (List<Asignaciones>) asignacionDAO.findByUsuIdAndSemestre(usuId, semestre);
 		for(Asignaciones asignacion: asignaciones){
-			profesor= new CursoProfesor();
-			
+			profesor= new CursoProfesor();			
 			existe=false;
 			
 			for(CursoProfesor p: cursos){
@@ -112,7 +111,7 @@ public class CursoRestController {
 	 * Metodo que retorna los grupos 
 	 * @return
 	 */
-	@RequestMapping("/Curso/findGrupos")
+	@RequestMapping("/curso/findGrupos")
 	@ResponseBody
 	public List<Grupos> getAllGrupos() {
 		List<Grupos> grupos = new ArrayList<Grupos>();
@@ -122,7 +121,7 @@ public class CursoRestController {
 
 	}
 	
-	@RequestMapping("/Curso/findBySem")
+	@RequestMapping("/curso/findBySem")
 	@ResponseBody
 	public Semestres getSemestre(Integer semId) {
 		Semestres semestre = new Semestres();
@@ -133,7 +132,7 @@ public class CursoRestController {
 	}
 	
 		
-	@RequestMapping("/Curso/findBy")
+	@RequestMapping("/curso/findBy")
 	@ResponseBody
 	public Cursos getCurso(Integer curId) {
 		Cursos curso = new Cursos();
@@ -143,7 +142,7 @@ public class CursoRestController {
 
 	}
 
-	@RequestMapping("/Curso/findAll")
+	@RequestMapping("/curso/findAll")
 	@ResponseBody
 	public List<Cursos> getAllCursos() {
 		List<Cursos> cursos = new ArrayList<Cursos>();
@@ -168,7 +167,7 @@ public class CursoRestController {
 	}
 	*/
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/Curso/save")
+	@RequestMapping(method = RequestMethod.POST, value = "/curso/save")
 	@ResponseBody
 	public String setCursos(@RequestBody Cursos curso) {
 
@@ -200,7 +199,7 @@ public class CursoRestController {
 
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "/Curso/update")
+	@RequestMapping(method = RequestMethod.POST, value = "/curso/update")
 	@ResponseBody
 	public String update (@RequestBody Cursos cur){
 		try{

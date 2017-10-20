@@ -1,5 +1,6 @@
 package com.udea.registro_actividades.modelo;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -15,7 +16,8 @@ public class CursoProfesor {
 	
 	private Integer totalHorasSemestre;
 	
-	private Collection<Grupos> grupos;	
+	private Collection<Grupos> grupos= new ArrayList<Grupos>(); 
+	
 	
 	public CursoProfesor(Integer id, String nombre, Integer cantidadCreditos, Integer totalHorasSemestre,
 			Collection<Grupos> grupos) {
