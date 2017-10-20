@@ -22,6 +22,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name = "TBL_Registro_Actividades", catalog = "", schema = "public")
@@ -85,6 +86,7 @@ public class Registro_Actividades {
 		return regfecha;
 	}
 
+	@JsonDeserialize(using=CustomerDateAndTimeDeserialize .class)
 	public void setReg_fecha(Date reg_fecha) {
 		this.regfecha = reg_fecha;
 	}
