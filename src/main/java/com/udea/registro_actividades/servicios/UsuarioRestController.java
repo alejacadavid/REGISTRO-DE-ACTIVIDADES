@@ -56,7 +56,7 @@ public class UsuarioRestController {
 	        props.put("mail.smtp.auth", "false");
 	        props.put("mail.smtp.starttls.enable", "true");
 	        props.put("mail.smtp.host", "smtp.gmail.com");	       	      
-	        props.put("mail.smtp.port", "486");
+	        props.put("mail.smtp.port", "465");
 	        props.put("mail.smtp.socketFactory.port","25");
 	        props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
 	        props.put("mail.smtp.socketFactory.fallback", "false");
