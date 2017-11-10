@@ -53,28 +53,27 @@ public class UsuarioRestController {
 	//metodo para enviar un correo de recuperacion 
 	 public void SendMail(String Username, String PassWord, String Subject,String Mensage) throws GeneralSecurityException {
 	        Properties props = new Properties();
-	        props.put("mail.smtp.auth", "false");
+	        props.put("mail.smtp.auth", "true");
 	        props.put("mail.smtp.starttls.enable", "true");
-	        props.put("mail.smtp.host", "smtp.gmail.com");	       	      
-	        props.put("mail.smtp.port", "486");
-	        props.put("mail.smtp.socketFactory.port","25");
-	        props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-	        props.put("mail.smtp.socketFactory.fallback", "false");
+	        props.put("mail.smtp.host", "smtp.gmail.com");
+	        props.put("mail.smtp.port", "587");
+	    
 	        
-	 //
+	 String usu="yesidmontoya77@gmail.com";
+	 String pas="iamcrazy1";
 	 
-	        Session session = Session.getInstance(props);
-//	                new javax.mail.Authenticator() {
-//	                    protected PasswordAuthentication getPasswordAuthentication() {
-//	                        return new PasswordAuthentication("yesidmontoya67@gmail.com", "iamcrazy1");
-//	                    }
-//	                });
+	        Session session = Session.getInstance(props,
+	                new javax.mail.Authenticator() {
+                  protected PasswordAuthentication getPasswordAuthentication() {
+	                        return new PasswordAuthentication(usu, pas);
+                    }
+               });
 	 
 	        try {
 	 System.out.println("entro 1");
 	            Message message = new MimeMessage(session);
 	            System.out.println("entro 2");
-	            message.setFrom(new InternetAddress("yesidmontoya77@gmail.com"));
+	            message.setFrom(new InternetAddress(usu));
 	            System.out.println("entro 3");
 	            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(Username));
 	            System.out.println("entro 4");
