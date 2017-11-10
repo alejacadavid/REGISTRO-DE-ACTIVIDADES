@@ -108,10 +108,5 @@ public class UsuarioRestController {
 		}
 		
 		return login;
-		
 	}
-	
-	
-	
-
 }
