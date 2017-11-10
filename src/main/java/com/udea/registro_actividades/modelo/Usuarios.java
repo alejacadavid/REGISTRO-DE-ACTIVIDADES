@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Column;
@@ -47,8 +49,8 @@ public class Usuarios {
 	@Column(name = "usu_password")
 	private String usuPassword;
 	
-	@NotNull
-	@Column(name = "usu_rol")
+	@ManyToOne
+	@JoinColumn(name = "FK_usu_rol")
 	private Roles rol;
 	
 	public Usuarios(Integer id, String usuNumeroDocumento, String usuNombres, String usuApellidos, String usuUsuario,
