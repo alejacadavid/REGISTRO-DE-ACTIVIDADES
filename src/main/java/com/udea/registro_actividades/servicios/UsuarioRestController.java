@@ -51,7 +51,7 @@ public class UsuarioRestController {
 	}
 	
 	//metodo para enviar un correo de recuperacion 
-	 public void SendMail(String Username, String PassWord, String Subject,String Mensage) throws GeneralSecurityException {
+	 public void SendMail(String Username, String Subject,String Mensage) throws GeneralSecurityException {
 	        Properties props = new Properties();
 	        props.put("mail.smtp.auth", "true");
 	        props.put("mail.smtp.starttls.enable", "true");
@@ -96,9 +96,9 @@ public class UsuarioRestController {
 			usuario= usuarioDAO.findByUsuEmail(nombreUsuario);
 			if(usuario!=null) {
 			String password=usuario.getUsuPassword();
-			String mensage="Su nombre de usuario es "+nombreUsuario+" y su contraseña es "+password;
+			String mensage="Su nombre de usuario es "+nombreUsuario+" y su contraseña es: "+password;
 			String asunto="Recuperacion de contraseña";
-			SendMail(nombreUsuario, password,asunto, mensage);
+			SendMail(nombreUsuario,asunto, mensage);
 			
 			login="valido";
 			}
