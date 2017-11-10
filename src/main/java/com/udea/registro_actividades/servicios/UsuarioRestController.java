@@ -71,18 +71,13 @@ public class UsuarioRestController {
 	 
 	        try {
 	 System.out.println("entro 1");
-	            Message message = new MimeMessage(session);
-	            System.out.println("entro 2");
-	            message.setFrom(new InternetAddress(usu));
-	            System.out.println("entro 3");
-	            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(Username));
-	            System.out.println("entro 4");
-	            message.setSubject(Subject);
-	            System.out.println("entro 5");
-	            message.setText(Mensage);
-	            System.out.println("entro 6");
+	            Message message = new MimeMessage(session);	            
+	            message.setFrom(new InternetAddress(usu));	            
+	            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(Username));	           
+	            message.setSubject(Subject);	            
+	            message.setText(Mensage);	            
 	            Transport.send(message);
-	            System.out.println("entro 7");
+	           
 	 
 	        } catch (MessagingException e) {
 	        	System.out.println(e.getMessage());
