@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sun.mail.util.MailSSLSocketFactory;
 import com.udea.registro_actividades.dao.UsuarioDAO;
-import com.udea.registro_actividades.modelo.Roles;
 import com.udea.registro_actividades.modelo.Usuarios;
 
 @CrossOrigin
