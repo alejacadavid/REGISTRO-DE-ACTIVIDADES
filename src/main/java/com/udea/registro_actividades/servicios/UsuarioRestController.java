@@ -11,11 +11,17 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import com.udea.registro_actividades.dao.UsuarioDAO;
 import com.udea.registro_actividades.modelo.Usuarios;
@@ -23,27 +29,29 @@ import com.udea.registro_actividades.modelo.Usuarios;
 @CrossOrigin
 @Controller
 public class UsuarioRestController {
-	
+	final static Logger logger = Logger.getLogger(UsuarioRestController.class);
 	@Autowired 
 	UsuarioDAO usuarioDAO;
 	
+	
 	@RequestMapping("/usuario/login")
-	@ResponseBody
-	public String login(String nombreUsuario, String password) {
+	@ResponseBody	
+	public Usuarios login(String username,String password) {
 		Usuarios usuario=new Usuarios();
-		String login="Usuario o cantraseña no validos";
+		Usuarios login=null;
 		try{
 			//usuario= usuarioDAO.findByUsuUsuario(nombreUsuario);	
-			usuario= usuarioDAO.findByUsuEmail(nombreUsuario);
+			usuario= usuarioDAO.findByUsuEmail(username);
 			if(usuario!=null && usuario.getUsuPassword().equalsIgnoreCase(password)) {
 			
-				login=usuario.getRol().getRolNombre();
+				login=usuario;
 			}
 		}catch(Exception e) {
-			login=e.getMessage();
-			
+			e.getMessage();
+			System.out.println(e.getMessage());
+						
 		}
-		
+		logger.info("Login bien ");
 		return login;
 		
 	}
