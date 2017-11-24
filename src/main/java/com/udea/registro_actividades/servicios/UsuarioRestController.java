@@ -115,4 +115,19 @@ public class UsuarioRestController {
 		
 		return login;
 	}
+	
+	@RequestMapping(value= "/usuario/modificar", method = RequestMethod.PUT)
+	@ResponseBody
+	public String modificarContraseña(String nombreUsuario, String pswd) {
+		String respuesta = null;
+		try {}catch(Exception e){}
+		Usuarios usuario=new Usuarios();
+		usuario= usuarioDAO.findByUsuEmail(nombreUsuario);
+		if (usuario != null) {
+			usuario.setUsuPassword(pswd);
+			usuarioDAO.save(usuario);
+			respuesta = "valida";
+		}
+		return respuesta;
+	}
 }
