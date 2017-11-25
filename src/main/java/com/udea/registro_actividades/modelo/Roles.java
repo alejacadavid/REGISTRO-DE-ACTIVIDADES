@@ -8,7 +8,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-
+//Clase que contiene los atributos de los roles de usuario
 @Entity
 @Table(name = "TBL_Roles")
 public class Roles {

@@ -1,10 +1,7 @@
 package com.udea.registro_actividades.excepciones;
-
+//Clase para manejar las excepciones de manera genérica.
 public class ExcepcionGenerica extends Exception{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	protected String mensajeTecnico;
 	protected String mensajeUsuario;

@@ -26,16 +26,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.udea.registro_actividades.dao.UsuarioDAO;
 import com.udea.registro_actividades.modelo.Usuarios;
 
+/**
+ * Esta clase define Los servicios REST para el objeto usuario.
+ * @author: Yesid Montoya - yesid.montoyap@udea.edu.co
+ * @version: 01/11/2017/
+ */
 @CrossOrigin
 @Controller
-public class UsuarioRestController {
+
+//Clase mediante la cual se controlan el uso de los servicios rest
+public class UsuarioRestController { 
 	final static Logger logger = Logger.getLogger(UsuarioRestController.class);
 	@Autowired 
 	UsuarioDAO usuarioDAO;
 	
-	
-	@RequestMapping("/usuario/login")
-	@ResponseBody	
+	//@RequestMapping etiqueta empleada para direccionar las llamadas del cliente.
+		
+	@RequestMapping("/usuario/login")  
+	@ResponseBody
+	/**
+	 * Método que recibe los parámetros y permite el login
+	 * @param username guarda el nombre de usuario
+	 * @param password guarda la contraseña
+	 * @return retorna el login para poder ingresar a la aplicación
+	 */
 	public Usuarios login(String username,String password) {
 		Usuarios usuario=new Usuarios();
 		Usuarios login=null;
@@ -56,7 +70,15 @@ public class UsuarioRestController {
 		
 	}
 	
-	//metodo para enviar un correo de recuperacion 
+	
+	/**
+	 * Método para enviar un correo de recuperación
+	 * @param Username recibe nombre de usuario
+	 * @param Subject  recibe el asunto
+	 * @param Mensage  recibe el cuerpo del correo
+	 * @throws GeneralSecurityException controla las excepciones 
+	 */
+	
 	 public void SendMail(String Username, String Subject,String Mensage) throws GeneralSecurityException {
 	        Properties props = new Properties();
 	        props.put("mail.smtp.auth", "true");
@@ -94,6 +116,11 @@ public class UsuarioRestController {
 	
 	@RequestMapping("/usuario/recuperar")
 	@ResponseBody
+	/**
+	 * Método que permite la recuperación de la contraseña
+	 * @param nombreUsuario recibe el usuario
+	 * @return retorna el login
+	 */
 	public String recuperarContraseña(String nombreUsuario) {
 		Usuarios usuario=new Usuarios();
 		String login="El correo no es un correo valido";
@@ -118,6 +145,12 @@ public class UsuarioRestController {
 	
 	@RequestMapping(value= "/usuario/modificar", method = RequestMethod.PUT)
 	@ResponseBody
+	/**
+	 * Método que permite modificar la contraseña
+	 * @param nombreUsuario recibe el usuario
+	 * @param pswd recibe la contraseña
+	 * @return retorna la respuesta del proceso
+	 */
 	public String modificarContraseña(String nombreUsuario, String pswd) {
 		String respuesta = null;
 		try {}catch(Exception e){}

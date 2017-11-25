@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
-
+//Clase que contiene los atributos de un usuario
 @Entity
 @Table(name = "TBL_Usuarios")
 public class Usuarios {

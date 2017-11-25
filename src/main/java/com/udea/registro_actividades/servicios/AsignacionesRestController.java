@@ -42,7 +42,6 @@ public class AsignacionesRestController {
 	    return "servicios para asignaciones: /asignaciones/findAll, /asignaciones/findBy?id=";
 	  }
 	 
-
 	/**
 	 * @author: Gonzalo Garcia gonchalo620@gmail.com
 	 * @version: 21/04/2017/

@@ -1,13 +1,12 @@
-﻿package com.udea.registro_actividades.modelo;
-
-/**
+﻿/**
  * Esta clase define la entidad para el objeto Registro de actividades
  * @author: Gonzalo Garcia gonchalo620@gmail.com
  * @version: 21/04/2017/
  */
 
-import java.util.Date;
+package com.udea.registro_actividades.modelo;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,12 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

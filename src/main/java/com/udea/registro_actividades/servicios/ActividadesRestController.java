@@ -19,9 +19,13 @@ import com.udea.registro_actividades.dao.ActividadesDAO;
 import com.udea.registro_actividades.dao.GruposDAO;
 import com.udea.registro_actividades.modelo.Actividades;
 
-//crossorigin para que permita ser usado desde afuera, se pueden hacer más configuraciones. con crossorigin sin parámetros queda abierto para cualquier maquina
+ //crossorigin para que permita ser usado desde afuera, se pueden hacer más configuraciones.
+ //con crossorigin sin parámetros queda abierto para cualquier máquina.
+ 
 @CrossOrigin
 @Controller
+
+
 public class ActividadesRestController {
 
 	final static Logger logger = Logger.getLogger(ActividadesRestController.class);

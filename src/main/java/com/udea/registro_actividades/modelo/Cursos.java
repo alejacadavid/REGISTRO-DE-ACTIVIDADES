@@ -13,7 +13,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 
-
+//Clase que contiene los atributos de los cursos
 @Entity
 @Table(name = "TBL_Cursos")
 public class Cursos {

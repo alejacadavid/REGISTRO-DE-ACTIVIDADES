@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import com.udea.registro_actividades.modelo.Grupos;
 
+//Clase que contiene los atributos de los cursos por profesor
 public class CursoProfesor {
 
 	private Integer id;
