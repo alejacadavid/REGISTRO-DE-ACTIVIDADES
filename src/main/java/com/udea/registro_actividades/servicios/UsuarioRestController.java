@@ -87,8 +87,8 @@ public class UsuarioRestController {
 	        props.put("mail.smtp.port", "587");
 	    
 	        
-	 String usu="yesidmontoya77@gmail.com";
-	 String pas="iamcrazy1";
+	 String usu="";//poner correo electronico de gmail como servidor
+	 String pas="";//poner contraseña del correo del campo anterior
 	 
 	        Session session = Session.getInstance(props,
 	                new javax.mail.Authenticator() {
