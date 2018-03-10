@@ -21,10 +21,10 @@ spring:
       
       
   datasource:
-    url: jdbc:postgresql://ec2-54-235-153-124.compute-1.amazonaws.com:5432/d6irph997uaqrd?serverTimezone=UTC&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+    url: jdbc:postgresql://localhost:5432/nombre_base_datos
     driver-class-name: org.postgresql.Driver
-    username: dpcsegfemxvvoy
-    password: 193f6ce8becef8b0ba4f1c72cc46b610ed9f10133bdbd918c1a3fe189027f8bf
+    username: 
+    password: 
     
     testWhileIdle: true
     validationQuery: SELECT 1

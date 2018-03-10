@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+//Clase que contiene los atributos del semestre
 @Entity
 @Table(name = "TBL_Semestres")
 public class Semestres {

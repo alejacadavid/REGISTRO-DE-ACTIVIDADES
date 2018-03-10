@@ -19,6 +19,8 @@ import com.udea.registro_actividades.dao.GruposDAO;
 import com.udea.registro_actividades.dao.SemestresDAO;
 import com.udea.registro_actividades.modelo.Asignaciones;
 import com.udea.registro_actividades.modelo.CursoProfesor;
+import com.udea.registro_actividades.modelo.CursoProfesor2;
+import com.udea.registro_actividades.modelo.CursoProfesor3;
 import com.udea.registro_actividades.modelo.Cursos;
 import com.udea.registro_actividades.modelo.Grupos;
 import com.udea.registro_actividades.modelo.Semestres;
@@ -87,6 +89,7 @@ public class CursoRestController {
 			}
 			
 			if(!existe){
+				
 				profesor.setId(asignacion.getGrupos().getCursos().iterator().next().getCurId());
 				profesor.setNombre(asignacion.getGrupos().getCursos().iterator().next().getCurNombre());
 				profesor.setCantidadCreditos(asignacion.getGrupos().getCursos().iterator().next().getCurCantidadCreditos());
@@ -107,6 +110,69 @@ public class CursoRestController {
 		return cursos;
 	}
 
+	@RequestMapping("/curso/findAsingA")
+	@ResponseBody
+	public List<CursoProfesor3> buscarAsignacionA(Integer usuId, Integer semId) {
+		List<Asignaciones> asignaciones = new ArrayList<Asignaciones>();
+		List<CursoProfesor2> cursos = new ArrayList<CursoProfesor2>();
+		List<CursoProfesor3> cursosA = new ArrayList<CursoProfesor3>();
+		CursoProfesor2 profesor=null;
+		CursoProfesor3 profesor3=null;
+		CursoProfesor2 cursoExistente=null;
+		Boolean existe=null;
+		
+		
+		Semestres semestre = new Semestres();
+		semestre = semestreDAO.findById(semId);
+		asignaciones = (List<Asignaciones>) asignacionDAO.findByUsuIdAndSemestre(usuId, semestre);
+		for(Asignaciones asignacion: asignaciones){
+			profesor= new CursoProfesor2();			
+			existe=false;
+			
+			for(CursoProfesor2 p: cursos){
+				//ArrayList<Cursos> listaCursos = new ArrayList<Cursos>();				
+				if(p.getId()==asignacion.getGrupos().getCursos().iterator().next().getCurId()){
+					cursoExistente=p;
+					existe=true;
+					break;
+				}
+			}
+			
+			if(!existe){
+				
+				profesor.setId(asignacion.getGrupos().getCursos().iterator().next().getCurId());
+				profesor.setNombre(asignacion.getGrupos().getCursos().iterator().next().getCurNombre());
+				profesor.setCantidadCreditos(asignacion.getGrupos().getCursos().iterator().next().getCurCantidadCreditos());
+				profesor.setTotalHorasSemestre(asignacion.getGrupos().getCursos().iterator().next().getCurTotalHorasSemestre());
+				profesor.getGrupos().add(asignacion.getGrupos());
+				for(Grupos grupo: profesor.getGrupos()){
+					grupo.getCursos().removeAll(getAllCursos());					
+				}
+				cursos.add(profesor);	
+			}else{
+				cursoExistente.getGrupos().add(asignacion.getGrupos());
+				for(Grupos grupo: cursoExistente.getGrupos()){
+					grupo.getCursos().removeAll(getAllCursos());
+				}
+			}
+			
+			
+		}
+		
+		
+	    for(int x=0;x<cursos.size();x++) {
+	    	
+	    	for(int y=0;y<cursos.get(x).getGrupos().size();y++) {
+	    		profesor3= new CursoProfesor3();	
+	    		profesor3.setNombre(cursos.get(x).getNombre());
+	    		profesor3.setGrupo(cursos.get(x).getGrupos().iterator().next().getNombre());
+	    		profesor3.setHorario(cursos.get(x).getGrupos().iterator().next().getHorario());
+	    		cursosA.add(profesor3);
+	    	}
+	    }
+		return cursosA;
+	}
+	
 	/**
 	 * Metodo que retorna los grupos 
 	 * @return

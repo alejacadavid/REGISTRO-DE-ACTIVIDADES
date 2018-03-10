@@ -34,7 +34,7 @@ public class Actividades {
 	private Collection<Registro_Actividades> registro_Actividades;
 
 
-	//CONSTRUCTOR 
+	//Constructor
 		public Actividades() {
 			
 		}
@@ -46,7 +46,7 @@ public class Actividades {
 		}
 	
 		
-		//GETTER Y SETTER
+		//Getter y Setter
 	public Integer getPk_act_id() {
 		return id;
 	}

@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
+//Clase que recibe los atributos para los grupos
 @Entity
 @Table(name = "TBL_Grupos")
 public class Grupos {
@@ -50,6 +50,7 @@ public class Grupos {
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name = "TBL_Cursos_Grupos", joinColumns = @JoinColumn(name = "PK_gru_id"), inverseJoinColumns = @JoinColumn(name = "PK_cur_id"))
 	private Collection<Cursos> cursos;
+	
 	
 	public Grupos(Integer id, String nombre, Integer cantidadCupos, String horario, String observaciones) {
 		super();
